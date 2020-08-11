@@ -1,0 +1,10 @@
+.idea
+npm-debug.log
+node_modules
+build
+
+.graphqlrc
+.tsgrc
+.cache
+graphql.config.json
+.githubtoken
