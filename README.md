@@ -12,7 +12,7 @@ This project references the same Shape Blog content template as the [shape-blog 
 1. Set up and run the client application
     1. `git clone https://github.com/takeshape/takeshape-samples takeshape-samples && cd takeshape-samples/shape-blog`
     1. `npm install` - This will install all dependencies
-    1. `npx tsg init` - Follow the command prompts to set up your local environment to communicate with TS
+    1. `npm run takeshape:init` - Follow the command prompts to set up your local environment to communicate with TS
     1. `npm run start` -  The server runs on [http://localhost:3000](http://localhost:3000) by default
 1. Have fun playing around with the sample site!
     - Change some markup a template file and the site will regenerate automatically

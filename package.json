@@ -27,22 +27,23 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "build": "npm run react:build && npm run tsg:build",
-    "start": "npm run ensure-manifest && npm-run-all --continue-on-error --parallel tsg:watch:tsg react:start",
-    "clean": "npm run tsg:clean && npm run react:clean",
-    "deploy": "npm run clean && npm run react:build && npm run tsg:deploy",
+    "build": "npm run react:build && npm run takeshape:build",
+    "start": "npm run ensure-manifest && npm-run-all --continue-on-error --parallel takeshape:watch react:start",
+    "clean": "npm run takeshape:clean && npm run react:clean",
+    "deploy": "npm run clean && npm run react:build && npm run takeshape:deploy",
     "ensure-manifest": "(mkdir -p ./static/build || exit 0) && echo \"{}\" > ./static/build/asset-manifest.json",
     "react:start": "node config/dev-server.js",
     "react:build": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.config.js",
     "react:test": "cross-env BABEL_ENV=test NODE_PATH=. ./node_modules/.bin/jest",
     "react:clean": "rimraf static/build",
-    "tsg:init": "tsg init",
-    "tsg:build": "tsg build -c",
-    "tsg:deploy": "tsg deploy",
-    "tsg:watch:tsg": "tsg watch -W -c",
-    "tsg:watch": "npm-run-all --serial tsg:build && npm run tsg:watch:*",
-    "tsg:start": "npm run watch",
-    "tsg:clean": "rimraf public"
+    "takeshape:init": "takeshape login && takeshape link",
+    "takeshape:cli-init": "takeshape login --cli-login && takeshape link",
+    "takeshape:build": "takeshape build -c",
+    "takeshape:deploy": "takeshape deploy",
+    "takeshape:watch-takeshape": "takeshape watch -W -c",
+    "takeshape:watch": "npm-run-all --serial takeshape:build && npm run takeshape:watch:*",
+    "takeshape:start": "npm run watch",
+    "takeshape:clean": "rimraf public"
   },
   "devDependencies": {
     "@babel/core": "^7.0.1",
@@ -76,7 +77,8 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "^2.0.4",
-    "yaml-loader": "^0.5.0"
+    "yaml-loader": "^0.5.0",
+    "@takeshape/cli": "^7.213.1"
   },
   "jest": {
     "collectCoverageFrom": [
